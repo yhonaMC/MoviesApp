@@ -1,0 +1,89 @@
+.listcolor {
+  color: white;
+  padding-left: 100px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  list-style: none;
+}
+.listcolor:hover {
+  color: #fed941;
+}
+.alingCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.meta {
+  color: white;
+  font-weight: bold;
+  margin-left: 4px;
+  text-decoration: none !important;
+}
+
+.bgBlack {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.divPrimary {
+  display: flex;
+}
+.btn:hover {
+  background: #fed941;
+}
+
+.divPrincipal {
+  position: relative;
+  height: max-content;
+}
+.divSecundario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  lef: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.volver {
+  color: white;
+  margin-top: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+.volver:hover {
+  color: white;
+}
+
+.alignImg {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.divImg {
+  margin-left: 35%;
+}
+
+.Btn {
+  background: #ef4565;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.BtnSuccess {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  background: #0e3fa9;
+}
