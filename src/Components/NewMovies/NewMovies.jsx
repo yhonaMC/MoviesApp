@@ -1,7 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { DivForm, Form, Input,DivButton,ButtonForm, H1,DivImg,} from "./styled";
-import {Link,useHistory} from "react-router-dom"
+import {
+  DivForm,
+  Form,
+  Input,
+  DivButton,
+  ButtonForm,
+  H1,
+  DivImg,
+} from "./styled";
+import { Link, useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const NewMovies = () => {
@@ -26,26 +34,30 @@ const NewMovies = () => {
     e.preventDefault();
     const response = await axios.post(url, data);
     if (response.status === 201) {
-      Swal.fire("Guardado!", `La pelicula ${response.data.title} fue agregada`, "success");
-      history.push("/peliculas")
+      Swal.fire(
+        "Guardado!",
+        `La pelicula ${response.data.title} fue agregada`,
+        "success"
+      );
+      history.push("/peliculas");
     } else {
       Swal.fire("Error!", "La pelicula no fue agregada", "error");
     }
-
-    console.log(response);
   };
 
   return (
     <DivForm>
       <Form onSubmit={handleSubmit}>
-      <DivImg >
-            <img
-              src="https://res.cloudinary.com/yhonamc/image/upload/v1630813536/logo-blockBuster_h0gpdg.png"
-              alt=""
-            />
-          </DivImg >
-      <H1 className="h3 mb-3 font-weight-normal">Añadir una Nueva Pelicula</H1>
-    
+        <DivImg>
+          <img
+            src="https://res.cloudinary.com/yhonamc/image/upload/v1630813536/logo-blockBuster_h0gpdg.png"
+            alt=""
+          />
+        </DivImg>
+        <H1 className="h3 mb-3 font-weight-normal">
+          Añadir una Nueva Pelicula
+        </H1>
+
         <Input
           type="text"
           placeholder="Nombre"
@@ -85,7 +97,9 @@ const NewMovies = () => {
         <DivButton>
           <ButtonForm>Agregar</ButtonForm>
         </DivButton>
-          <Link to="/peliculas" className="volver">Volver</Link>
+        <Link to="/peliculas" className="volver">
+          Volver
+        </Link>
       </Form>
     </DivForm>
   );

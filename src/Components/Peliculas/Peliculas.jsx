@@ -7,13 +7,20 @@ import axios from "axios";
 import { Input, H1 } from "../NewMovies/styled";
 
 const Peliculas = ({ buscar, category }) => {
-  const url = `https://pelis-blockmaster.herokuapp.com/peliculas?title_like=`;
+  let url = "";
   const [movie, setmovie] = useState([]);
   const [updateList, setUpdateList] = useState(false);
   const [show, setShow] = useState(false);
   const handleCloseModal = () => setShow(false);
   const handleOpenModal = () => setShow(true);
   const [dataModal, setDataModal] = useState([]);
+  const [paginas, setPaginas] = useState(1);
+
+  if (buscar.length) {
+    url = "https://pelis-blockmaster.herokuapp.com/peliculas?title_like=";
+  } else {
+    url = `https://pelis-blockmaster.herokuapp.com/peliculas?_limit=8&_page=${paginas}`;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +47,22 @@ const Peliculas = ({ buscar, category }) => {
       .then((response) => response.json())
       .then((data) => setmovie(data));
   }, [updateList, buscar]);
+
+  // scroll
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((resp) => setmovie([...movie, ...resp]));
+  }, [paginas]);
+
+  window.onscroll = function () {
+    if (
+      window.innerHeight + window.scrollY ===
+      document.documentElement.offsetHeight
+    ) {
+      setPaginas(paginas + 1);
+    }
+  };
 
   const handleChangeModal = ({ target }) => {
     setDataModal({
